@@ -4,6 +4,7 @@ from rest_framework import status
 from rest_framework import response
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny, IsAdminUser,IsAuthenticated
+from rest_framework.generics import RetrieveAPIView
 from .serializes import UserRegistrationSerializer
 class UserRegistrationView(CreateAPIView):
     serializer_class = UserRegistrationSerializer
@@ -25,6 +26,5 @@ class UserRegistrationView(CreateAPIView):
                 'message': serializer.errors,
             }
             return Response(response_data, status=status_code)
-class UserLoginView(CreateAPIView):
-    pass
+
 
