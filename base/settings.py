@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "userauth.apps.UserauthConfig",
+    'rest_framework',
+
 ]
 
 MIDDLEWARE = [
@@ -50,6 +53,18 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'base.urls'
+
+AUTH_USER_MODEL = "userauth.User" 
+
+REST_FRAMEWORK = {
+     'DEFAULT_PERMISSION_CLASSES': [
+         'rest_framework.permissions.IsAuthenticated',
+         'rest_framework.permissions.IsAdminUser',
+         ],
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+     'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+     )
+}
 
 TEMPLATES = [
     {
