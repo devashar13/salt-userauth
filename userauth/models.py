@@ -33,6 +33,7 @@ class MyAccountManager(BaseUserManager):
 
 
 class User(AbstractBaseUser, PermissionsMixin):
+    id = models.AutoField(primary_key=True)
     email = EmailField(_('email address'), unique=True)
     name = models.CharField(max_length=255)
     is_staff = models.BooleanField(default=False)
